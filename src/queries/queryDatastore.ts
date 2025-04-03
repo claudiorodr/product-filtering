@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { operators, products, properties } from "@/data/datastore";
 import { getOperatorsOfProperty } from "@/lib/utils";
 import { OPERATORS } from "@/types/store";

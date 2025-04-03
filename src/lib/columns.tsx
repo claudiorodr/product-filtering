@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,12 +8,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
-import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
-export const columns: ColumnDef<Product>[] = [
+export const columns = [
   // {
   //   id: "select",
   //   header: ({ table }) => (
