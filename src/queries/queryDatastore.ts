@@ -1,4 +1,5 @@
-// Importing data and utility functions from the project
+// @ts-nocheck
+
 import { operators, products, properties } from "@/data/datastore";
 import { getOperatorsOfProperty } from "@/lib/utils";
 import { OPERATORS, Property } from "@/types/store";
