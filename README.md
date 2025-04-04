@@ -1,51 +1,41 @@
-# React 19 + TypeScript + Vite Template
+# Salsify Product Filter
 
-> A modern, feature-rich template for building scalable React applications with the latest tools and best practices.
+> The code challenge for Salsify, a product filter using React 19, TypeScript, and Vite.
 
-## ✨ Key Features
+## 🚀 Live demo: [https://product-filtering.vercel.app/](https://product-filtering.vercel.app/)
+
+## ✨ Tech Stack
 
 - 🚀 **React 19** - Experience the future with the new React Compiler
 - ⚡ **Vite** - Lightning-fast development with instant HMR
 - 🎯 **TypeScript** - Type-safe development with latest features
 - 🎨 **TailwindCSS** - Utility-first CSS with modern preset
 - 🔄 **TanStack Router** - Type-safe routing with code splitting
-- 📡 **TanStack Query** - Powerful data synchronization
 - ✅ **Vitest** - Next-generation testing framework
 - 📦 **PNPM** - Fast, disk space efficient package manager
 - 🔍 **ESLint + Prettier** - Modern linting and code formatting
-
-## ⚠️ Disclaimer
-
-This template is designed to stay cutting-edge, which means it:
-
-    May not suit all workflows due to frequent updates with the latest tools and features.
-    Focuses on Client-Side Rendering (CSR) for SPAs. For SSR/SSG, consider using frameworks like:
-        Next.js
-        Remix (React Router 7)
-        TanStack Start (beta).
-    Includes experimental features that are tested but could still pose compatibility risks.
+- 🪩 **chadcn** - A set of components for building beautiful UIs
+- 🧪 **Testing Library** - Testing utilities for React
 
 ## 📚 Documentation
 
-### Preretirement
+### Requirement
 
-Latest lts for node js, and pnpm installed.
+Latest LTS for node js, and pnpm installed.
 
 ### Getting Started
 
-Two options here either use github's `Use this template` button or do it by cloning the code, there is a script to help clean up git and setup it up.
-
 ```bash
 # Clone the repository
-git clone https://github.com/FerMPY/react-ts-template.git my-app
+git clone https://github.com/claudiorodr/product-filtering
 
 # Navigate to project directory
-cd my-app
+cd product-filtering
 
 # Install dependencies
 pnpm install
 
-# CLean up git
+# Clean up git
 pnpm node --experimental-strip-types ./scripts/setup.ts
 
 # Start development server
@@ -102,81 +92,34 @@ pnpm dev
 └── vite.config.ts
 ```
 
-### Performance Optimizations
+### ℹ️ Product Details
 
-- ⚡ Route-based code splitting
-- 🔄 Optimistic updates with TanStack Query
-- 📦 Tree-shaking for smaller bundles
-- 🎯 Type-only imports
-- 🚀 React Compiler optimizations
+In this project we build a product filter applies to the full set of products. The resulting set of products, presented as a list, is updated as filters are added or changed.
 
-### Testing
+In order to create a filter users must choose a property, an operator, and one or more values. When the user selects a property, the available operators are updated to only show the operators that are valid for that property. If the operator allows to filter by property values then the search input is enabled, otherwise it stays disabled. It is possible to reset the filter by clicking on the "Reset" button.
 
-This template comes with a little helper `render-with-router` to help with writing tests with Tanstack Router, this comes with 2 options withUser that will add a user so you can run the tests and a with withQueryClient that adds Tanstack query to your tests, also globals are turned for Vitest.
+The products table shows 5 columns: **Name**, **Color**, **Category**, **Weight** and **Category** and **Wireless**. The table is sortable by each of the columns. The table is paginated and shows 10 products per page. The user can navigate between pages using the pagination component.
 
-```typescript
-// Example test using Vitest with render-with-router
-import { renderWithRouter } from ".";
-import { useRouter } from "@tanstack/react-router";
+### 📸 Screenshots
 
-const TestComponent = () => {
-  const _router = useRouter({ warn: true });
+![alt text](image.png)
+![alt text](image-2.png)
+![alt text](image-1.png)
 
-  return <div>TestComponent</div>;
-};
+### Technical Details
 
-describe('Button', () => {
-  it('renders correctly', () => {
-    { user } = renderWithRouter(TestComponent, { withUser: true, withQueryClient: true });
-    user.click('button');
-  });
-});
-```
+The project has 2 main components: `ProductFilter` and `ProductTable`. The `ProductFilter` component is responsible for rendering the filter form and the `ProductTable` component is responsible for rendering the product table.
 
-## 🛠️ Tools and Libraries for React Development
+The `ProductFilter` component uses the `fetchProperties` and `fetchOperatorsByProperty` queries to fetch the operators by a given property.
 
-While this template provides a solid foundation, you might find these additional tools and libraries useful as your application grows:
+The `ProductTable` component uses the `fetchProductsByFilters` query to fetch the products by the selected filters. On the first render, the `ProductTable` component fetches all the products and renders them in the table. The `fetchProductsByFilters` query is called whenever the filters are changed.
 
-### State Management
-
-[Zustand](https://zustand.docs.pmnd.rs/getting-started/introduction): A minimal, unopinionated state management library cwith a simple API and hooks.
-[Jotai](https://jotai.org/): A primitive and flexible state management library for React with atomic state.
-
-### UI/UX Libraries
-
-[Fluid-Tailwind](https://fluid.tw/): A utility-focused library that extends TailwindCSS for a more fluid design approach.
-[shadcn/ui](https://ui.shadcn.com/c): A modern library that combines design tokens and utility classes for rapid UI development.
-
-### ORMs
-
-[Prisma](https://www.prisma.io/): A powerful ORM for working with databases, enabling type-safe queries and schema migrations.
-[Drizzle](https://orm.drizzle.team/): A lightweight ORM alternative that offers a simpler API for SQL databases.
-
-### Headless UI Components
-
-[Radix UI](https://www.radix-ui.com/): A library of low-level, unstyled UI components for accessibility and customization.
-[Headless UI](https://headlessui.com/): Tailored for React and Vue, it provides accessible, unstyled components that work seamlessly with TailwindCSS.
-[React Aria](https://react-spectrum.adobe.com/react-aria/index.html): A suite of React hooks that helps you build accessible and robust user interfaces.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (\`git checkout -b feature/amazing-feature\`)
-3. Commit your changes (\`git commit -m 'Add amazing feature'\`)
-4. Push to the branch (\`git push origin feature/amazing-feature\`)
-5. Open a Pull Request
-
-## ⚠️ Limitations and Known Issues
-
-- React 19 just released there could be dependency issues
-- Some features might be experimental, they are tested before benign added to the template but still be careful.
+Tests are written using the `@testing-library/react` library. The tests are located in the `tests` folder. The tests are run using the `pnpm test` command. They replicate the user experience by simulating user interactions with the filter form and the product table.
 
 ---
 
 <div align="center">
 
-Made with ❤️ by Fernando Mendoza
-
-[⬆ Back to top](#react-19--typescript--vite-template)
+Made with ❤️ by Cláudio Rodrigues
 
 </div>
