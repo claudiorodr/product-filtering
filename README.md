@@ -108,6 +108,8 @@ The products table shows 5 columns: **Name**, **Color**, **Category**, **Weight*
 
 ### Technical Details
 
+This repository contains a mock `datastore` (`/src/data/datastore.ts`) which includes sample products, property definitions including data types, and the complete set of filter operator. The `queryDatastore` (`/src/queries/queryDatastore.ts`) file has multiple query functions used to query the datastore and return its content.
+
 The project has 2 main components: `ProductFilter` and `ProductTable`. The `ProductFilter` component is responsible for rendering the filter form and the `ProductTable` component is responsible for rendering the product table.
 
 The `ProductFilter` component uses the `fetchProperties` and `fetchOperatorsByProperty` queries to fetch the operators by a given property.
