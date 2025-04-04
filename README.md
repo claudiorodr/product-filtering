@@ -2,7 +2,7 @@
 
 > The code challenge for Salsify, a product filter using React 19, TypeScript, and Vite.
 
-## 🚀 Live demo: [https://product-filtering.vercel.app/](https://product-filtering.vercel.app/)
+## 🚀 Live demo: [https://product-filtering-rouge.vercel.app/](https://product-filtering-rouge.vercel.app/)
 
 ## ✨ Tech Stack
 
