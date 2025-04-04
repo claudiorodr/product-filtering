@@ -17,17 +17,19 @@ import {
 } from "@/queries/queryDatastore";
 import { OPERATORS } from "@/types/store";
 
+import { Button } from "./ui/button";
+
 export const ProductFilter = ({
   filters: { operator, property, value },
 }: {
   filters: {
     property: {
       selectedProperty: number | null;
-      setSelectedProperty: (propertyId: number) => void;
+      setSelectedProperty: (propertyId: number | null) => void;
     };
     operator: {
       selectedOperator: OPERATORS | null;
-      setSelectedOperator: (operatorId: OPERATORS) => void;
+      setSelectedOperator: (operatorId: OPERATORS | null) => void;
     };
     value: {
       propertyValue: string;
@@ -46,7 +48,7 @@ export const ProductFilter = ({
   return (
     <div className="flex items-center gap-2 py-4">
       <Select onValueChange={(value) => setSelectedProperty(Number(value))}>
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger className="w-[180px]" aria-label="Property">
           <SelectValue placeholder="Select a property" />
         </SelectTrigger>
         <SelectContent>
@@ -62,7 +64,11 @@ export const ProductFilter = ({
       <Select
         onValueChange={(value) => setSelectedOperator(value as OPERATORS)}
       >
-        <SelectTrigger className="w-[180px]" disabled={operators.length === 0}>
+        <SelectTrigger
+          className="w-[180px]"
+          disabled={operators.length === 0}
+          aria-label="Operator"
+        >
           <SelectValue placeholder="Select an operator" />
         </SelectTrigger>
         <SelectContent>
@@ -86,7 +92,19 @@ export const ProductFilter = ({
         value={propertyValue}
         onChange={(event) => setPropertyValue(event.target.value)}
         className="max-w-sm"
+        aria-label="Property Value"
       />
+      <Button
+        variant="outline"
+        onClick={() => {
+          setSelectedProperty(null);
+          setSelectedOperator(null);
+          setPropertyValue("");
+        }}
+        className="ml-auto"
+      >
+        Reset
+      </Button>
     </div>
   );
 };
