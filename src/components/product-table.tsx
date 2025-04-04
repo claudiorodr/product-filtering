@@ -33,11 +33,11 @@ export function ProductTable({ products }: { products: Product[] }) {
   const data = React.useMemo(() => {
     return products.map((product) => {
       return {
-        name: product.property_values[0].value,
-        color: product.property_values[1].value,
-        weight: product.property_values[2].value,
-        category: product.property_values[3].value,
-        // wireless: product.property_values[4].value,
+        name: product.property_values[0].value ?? "-",
+        color: product.property_values[1].value ?? "-",
+        weight: product.property_values[2].value ?? "-",
+        category: product.property_values[3].value ?? "-",
+        wireless: product.property_values[4]?.value ?? "-",
       };
     });
   }, [products]);
