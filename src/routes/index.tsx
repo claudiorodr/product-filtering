@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import React, { useState } from "react";
 
 import { createFileRoute } from "@tanstack/react-router";
@@ -7,14 +5,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ProductFilter } from "@/components/product-filter";
 import { ProductTable } from "@/components/product-table";
 import { fetchProductsByFilters } from "@/queries/queryDatastore";
-import { OPERATORS } from "@/types/store";
+import { OPERATORS, Property } from "@/types/store";
 
 export const Route = createFileRoute("/")({
-  component: ProductFiltering,
+  component: App,
 });
 
-function ProductFiltering() {
-  const [selectedProperty, setSelectedProperty] = useState<number | null>(null);
+export function App() {
+  const [selectedProperty, setSelectedProperty] = useState<
+    Property["id"] | null
+  >(null);
   const [selectedOperator, setSelectedOperator] = useState<OPERATORS | null>(
     null,
   );
